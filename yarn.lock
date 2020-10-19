@@ -172,6 +172,11 @@ sequelize@^6.3.5:
     validator "^10.11.0"
     wkx "^0.5.0"
 
+short-unique-id@^3.0.5:
+  version "3.0.5"
+  resolved "https://registry.yarnpkg.com/short-unique-id/-/short-unique-id-3.0.5.tgz#a51276f3af0eb8ce3a7248f76ef157c2404df790"
+  integrity sha512-BJ0LZeA0nhvXua7+gsenL7l+hHCXkCxf/M0PZkUkVerNVfzCHVj8Wh5v3d9J+Vu9hJ04ktau72o2LPAWbEkuWA==
+
 sqlstring@^2.3.2:
   version "2.3.2"
   resolved "https://registry.yarnpkg.com/sqlstring/-/sqlstring-2.3.2.tgz#cdae7169389a1375b18e885f2e60b3e460809514"

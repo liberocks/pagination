@@ -1,41 +1,39 @@
 "use strict";
 
 const faker = require("faker");
+const { default: ShortUniqueId } = require("short-unique-id");
+const uuid = new ShortUniqueId();
 
 module.exports = {
   up: async (queryInterface, Sequelize) => {
-    const totalBatch = 400000;
-    const itemPerBatch = 250;
+    const totalBatch = 2500;
+    const itemPerBatch = 400;
 
     for (const batch of Array(totalBatch).keys()) {
       const items = Array(itemPerBatch)
         .fill(0)
         .map((item) => ({
-          email: faker.internet.email(),
-          profile_picture: faker.image.people(),
+          email: `${uuid()}@${uuid()}.com`,
+          profile_picture: `https://${uuid()}.com/${uuid()}.jpg`,
           first_name: faker.name.firstName(),
           middle_name: Math.random() < 0.5 ? null : faker.name.firstName(),
           last_name: faker.name.lastName(),
           age: Math.random() < 0.25 ? null : Math.round(Math.random() * 100),
           is_verified: Math.random() < 0.5 ? true : false,
           is_suspended: Math.random() < 0.5 ? true : false,
-          passwordHash: faker.internet.password(),
+          passwordHash: `${uuid()}${uuid()}${uuid()}${uuid()}${uuid()}`,
           address: JSON.stringify({
-            street_address: faker.address.streetAddress(),
-            zip_code: faker.address.zipCode(),
-            country: faker.address.country(),
-            city: faker.address.city(),
-          }),
-          ip_addresses: JSON.stringify({
-            list: Array(Math.round(1 + Math.random() * 10))
-              .fill(0)
-              .map((item) => faker.internet.ip()),
+            street_address:
+              Math.random() < 0.15 ? null : faker.address.streetAddress(),
+            zip_code: Math.random() < 0.15 ? null : faker.address.zipCode(),
+            country: Math.random() < 0.15 ? null : faker.address.country(),
+            city: Math.random() < 0.15 ? null : faker.address.city(),
           }),
           created_at: faker.date.past(),
           updated_at: faker.date.recent(),
         }));
 
-      await queryInterface.bulkInsert("people", items, {});
+      await queryInterface.bulkInsert("People", items, {});
 
       if (batch % 100 === 0) {
         console.log(
@@ -52,6 +50,6 @@ module.exports = {
   },
 
   down: async (queryInterface, Sequelize) => {
-    await queryInterface.bulkDelete("people", null, {});
+    await queryInterface.bulkDelete("People", null, {});
   },
 };
