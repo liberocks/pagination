@@ -4,20 +4,23 @@
     "password": "root",
     "database": "scratch",
     "host": "0.0.0.0",
-    "dialect": "mysql"
+    "dialect": "mysql",
+    "console":true
   },
   "test": {
     "username": "root",
     "password": "root",
     "database": "scratch",
     "host": "0.0.0.0",
-    "dialect": "mysql"
+    "dialect": "mysql",
+    "console":true
   },
   "production": {
     "username": "root",
     "password": "root",
     "database": "scratch",
     "host": "0.0.0.0",
-    "dialect": "mysql"
+    "dialect": "mysql",
+    "console":true
   }
 }
